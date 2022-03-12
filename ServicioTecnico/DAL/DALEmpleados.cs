@@ -22,7 +22,7 @@ namespace ServicioTecnico.DAL
                 //Declaramos un DataSet
                 DataSet dsEmpleados = new DataSet();
 
-                if (Tipo.Equals(null))
+                if (Tipo==null)
                 {
                     //Obetenr todo los empleados de todo tipo
                     dsEmpleados = DBConnection.ExecuteDataSet("Empleados_Listar");
@@ -56,11 +56,11 @@ namespace ServicioTecnico.DAL
 
 
         //Insertar Empleado
-        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno,DateTime fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Empleados_Insertar", "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
+                DBConnection.ExecuteNonQuery("Empleado_Insertar", "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno,"@FechaNac",fechaNac, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
             }
             catch (Exception)
             {

@@ -40,7 +40,7 @@ namespace ServicioTecnico
         Entregada
     }
 
-    public enum Estados
+    public enum Estado
     {
         [Description("Baja California")]
         BajaCalifornia,

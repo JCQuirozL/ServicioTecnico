@@ -12,6 +12,7 @@ namespace ServicioTecnico.VO
         private string _Marca;
         private string _Color;
         private string _Especificaciones;
+        private string _Foto;
         private string _Serie;
 
         public EquiposVO()
@@ -21,6 +22,7 @@ namespace ServicioTecnico.VO
             Color = string.Empty;
             Marca = string.Empty;
             Especificaciones = string.Empty;
+            Foto = string.Empty;
             Serie = string.Empty;
         }
 
@@ -31,6 +33,7 @@ namespace ServicioTecnico.VO
             Color = dataRow["Color"].ToString();
             Especificaciones = dataRow["Especificaciones"].ToString();
             Serie = dataRow["Serie"].ToString();
+            Foto = dataRow["Foto"].ToString();
         }
 
         public int Id { get => _Id; set => _Id = value; }
@@ -38,5 +41,6 @@ namespace ServicioTecnico.VO
         public string Color { get => _Color; set => _Color = value; }
         public string Especificaciones { get => _Especificaciones; set => _Especificaciones = value; }
         public string Serie { get => _Serie; set => _Serie = value; }
+        public string Foto { get => _Foto; set => _Foto = value; }
     }
 }

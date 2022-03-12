@@ -12,6 +12,7 @@ namespace ServicioTecnico.VO
         private string _Nombre;
         private string _ApPaterno;
         private string _ApMaterno;
+        private DateTime _FechaNacimiento;
         private string _Email;
         private string _Telefono;
         private string _Estado;
@@ -26,6 +27,7 @@ namespace ServicioTecnico.VO
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string ApPaterno { get => _ApPaterno; set => _ApPaterno = value; }
         public string ApMaterno { get => _ApMaterno; set => _ApMaterno = value; }
+        public DateTime FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
         public string Email { get => _Email; set => _Email = value; }
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
@@ -34,12 +36,15 @@ namespace ServicioTecnico.VO
         public string Numero { get => _Numero; set => _Numero = value; }
         public string CP { get => _CP; set => _CP = value; }
         public string TipoEmpleado { get => _TipoEmpleado; set => _TipoEmpleado = value; }
+
+
         public EmpleadoVO()
         {
             Id = 0;
             Nombre = string.Empty;
             ApPaterno = string.Empty;
             ApMaterno = string.Empty;
+            FechaNacimiento = DateTime.Parse("1990-01-01");
             Email = string.Empty;
             Telefono = string.Empty;
             Estado = string.Empty;
@@ -55,8 +60,9 @@ namespace ServicioTecnico.VO
         {
             Id = int.Parse(dataRow["Id"].ToString());
             Nombre = dataRow["Nombre"].ToString();
-            ApPaterno= dataRow["ApPaterno"].ToString();
+            ApPaterno = dataRow["ApPaterno"].ToString();
             ApMaterno = dataRow["ApMaterno"].ToString();
+            FechaNacimiento = DateTime.Parse(dataRow["FechaNacimiento"].ToString());
             Email = dataRow["Email"].ToString();
             Telefono = dataRow["Telefono"].ToString();
             Estado = dataRow["Estado"].ToString();

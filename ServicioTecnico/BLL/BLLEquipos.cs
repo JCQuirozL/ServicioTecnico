@@ -17,7 +17,7 @@ namespace ServicioTecnico.BLL
         }
 
         //Insertar
-        public static string InsertarEquipo(string Marca, string Color, string Espec, string Serie)
+        public static string InsertarEquipo(string Marca, string Color, string Espec, string Serie,string Foto)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace ServicioTecnico.BLL
                 }
                 else
                 {
-                    DAL.DALEquipos.InsertarEquipo(Marca, Color, Espec, Serie);
+                    DAL.DALEquipos.InsertarEquipo(Marca, Color, Espec, Serie, Foto);
                     return "Equipo registrado";
                 }
 
@@ -51,11 +51,11 @@ namespace ServicioTecnico.BLL
         }
 
         //Actualizar
-        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie, bool? EnReparacion)
+        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie,string Foto, bool? EnReparacion)
         {
             try
             {
-                DAL.DALEquipos.UpdEquipo(Id, Marca, Color, Espec, Serie, EnReparacion);
+                DAL.DALEquipos.UpdEquipo(Id, Marca, Color, Espec, Serie, Foto, EnReparacion);
             }
             catch (Exception ex)
             {

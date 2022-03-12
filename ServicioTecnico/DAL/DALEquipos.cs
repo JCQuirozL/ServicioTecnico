@@ -53,11 +53,11 @@ namespace ServicioTecnico.DAL
         }
 
         //--Insrtar
-        public static void InsertarEquipo(string Marca, string Color, string Espec, string Serie)
+        public static void InsertarEquipo(string Marca, string Color, string Espec, string Serie, string Foto)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Equipos_Insertar", "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie);
+                DBConnection.ExecuteNonQuery("Equipos_Insertar", "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie,"@Foto", Foto);
             }
             catch (Exception ex)
             {
@@ -68,11 +68,11 @@ namespace ServicioTecnico.DAL
 
         //--Actualizar
 
-        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie, bool? EnReparacion)
+        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie, string Foto, bool? EnReparacion)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Equipos_Actualizar", "@Id", Id, "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie, "@EnRep", EnReparacion);
+                DBConnection.ExecuteNonQuery("Equipos_Actualizar", "@Id", Id, "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie,"@Foto",Foto, "@EnRep", EnReparacion);
             }
             catch (Exception ex)
             {

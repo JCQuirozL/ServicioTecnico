@@ -17,11 +17,11 @@ namespace ServicioTecnico.BLL
         }
 
         //Insertar
-        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno, DateTime fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
-                DAL.DALEmpleados.InsertarEmpleado(nombre, appaterno, apmaterno, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
+                DAL.DALEmpleados.InsertarEmpleado(nombre, appaterno, apmaterno, fechaNac, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
             }
             catch (Exception)
             {
