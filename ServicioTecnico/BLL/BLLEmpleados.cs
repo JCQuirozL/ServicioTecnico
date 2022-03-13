@@ -36,10 +36,10 @@ namespace ServicioTecnico.BLL
         {
             try
             {
-                bool enServicio = DAL.DALEmpleados.EnServicio(id);
-
+                bool enServicioDetalle = DALEmpleados.EnServicioDetalle(id);
+                bool enServicio = DALEmpleados.EnServicio(id, "Empleados");
                 //No se puede modificar un tipo de empleado "TECNICO" a otro tipo si ya tiene asignada una orden o detalle de servicio
-                if ((tipoEmpleado != "Técnico") && (enServicio))
+                if ((tipoEmpleado != "Técnico") && (enServicioDetalle || enServicio))
                 {
                     //EmpleEmpleado con orden de servicio
                     return "error";
@@ -53,9 +53,9 @@ namespace ServicioTecnico.BLL
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                return ex.ToString();
                 throw;
             }
         }
@@ -67,9 +67,10 @@ namespace ServicioTecnico.BLL
             try
             {   //para q un empleado esté asignado a un detalle de servicio debe ser técnico
                 //bool esTecnico = DAL.DALEmpleados.EsTecnico("Técnico");
-                bool enServicio = DAL.DALEmpleados.EnServicio(id);
+                bool enServicioDetalle = DALEmpleados.EnServicioDetalle(id);
+                bool enServicio = DALEmpleados.EnServicio(id, "Empleados");
                 //Si está en un detalle de servicio no lo vamos a borrar
-                if (enServicio)
+                if (enServicioDetalle || enServicio)
                 {
                     return "error";
                 }
@@ -81,7 +82,7 @@ namespace ServicioTecnico.BLL
             }
             catch (Exception ex)
             {
-
+                return ex.ToString();
                 throw;
             }
         }

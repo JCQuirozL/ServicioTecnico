@@ -125,6 +125,8 @@ namespace ServicioTecnico.Catalogos
                 {
                     UtilControls.SweetBox("Registro borrado", "El registro se ha borrado satisfactoriamente", "error", this.Page, this.GetType());
                 }
+
+                ActualizarLista();
             }
             catch (Exception ex)
             {

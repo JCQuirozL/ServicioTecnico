@@ -111,6 +111,9 @@
     <Content Include="About.aspx" />
     <Content Include="Catalogos\AltaEmpleado.aspx" />
     <Content Include="Catalogos\EdicionEmpleado.aspx" />
+    <Content Include="Catalogos\Equipos\AltaEquipo.aspx" />
+    <Content Include="Catalogos\Equipos\EdicionEquipo.aspx" />
+    <Content Include="Catalogos\Equipos\ListaEquipos.aspx" />
     <Content Include="Catalogos\ListaEmpleados.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -195,6 +198,27 @@
     </Compile>
     <Compile Include="Catalogos\EdicionEmpleado.aspx.designer.cs">
       <DependentUpon>EdicionEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\AltaEquipo.aspx.cs">
+      <DependentUpon>AltaEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\AltaEquipo.aspx.designer.cs">
+      <DependentUpon>AltaEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\EdicionEquipo.aspx.cs">
+      <DependentUpon>EdicionEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\EdicionEquipo.aspx.designer.cs">
+      <DependentUpon>EdicionEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\ListaEquipos.aspx.cs">
+      <DependentUpon>ListaEquipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Equipos\ListaEquipos.aspx.designer.cs">
+      <DependentUpon>ListaEquipos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\ListaEmpleados.aspx.cs">
       <DependentUpon>ListaEmpleados.aspx</DependentUpon>

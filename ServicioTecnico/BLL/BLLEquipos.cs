@@ -1,4 +1,5 @@
-﻿using ServicioTecnico.VO;
+﻿using ServicioTecnico.DAL;
+using ServicioTecnico.VO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +18,7 @@ namespace ServicioTecnico.BLL
         }
 
         //Insertar
-        public static string InsertarEquipo(string Marca, string Color, string Espec, string Serie,string Foto)
+        public static string InsertarEquipo(string Marca, string Color, string Desc, string Espec, string Serie,string Foto)
         {
             try
             {
@@ -33,11 +34,11 @@ namespace ServicioTecnico.BLL
                 }
                 if (duplicado)
                 {
-                    return "La serie del equipo ya está dada de alta";
+                    return "Duplicado";
                 }
                 else
                 {
-                    DAL.DALEquipos.InsertarEquipo(Marca, Color, Espec, Serie, Foto);
+                    DAL.DALEquipos.InsertarEquipo(Marca, Color, Desc, Espec, Serie, Foto);
                     return "Equipo registrado";
                 }
 
@@ -51,11 +52,30 @@ namespace ServicioTecnico.BLL
         }
 
         //Actualizar
-        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie,string Foto, bool? EnReparacion)
+        public static string UpdEquipo(int Id, string Marca, string Color, string Desc, string Espec, string Serie,string Foto, bool? EnReparacion)
         {
             try
             {
-                DAL.DALEquipos.UpdEquipo(Id, Marca, Color, Espec, Serie, Foto, EnReparacion);
+                bool duplicado = false;
+
+                List<EquiposVO> Equipos = DAL.DALEquipos.GetLstEquipos(false);
+                foreach (EquiposVO item in Equipos)
+                {
+                    if (item.Serie == Serie)
+                    {
+                        duplicado = true;
+                    }
+                }
+                if (duplicado)
+                {
+                    return "Duplicado";
+                }
+                else
+                {
+                    DAL.DALEquipos.UpdEquipo(Id, Marca, Color, Desc, Espec, Serie, Foto, EnReparacion);
+                    return "Equipo registrado";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -66,22 +86,23 @@ namespace ServicioTecnico.BLL
 
         //Borrar
 
-        public string EliminarEquipo(int id)
+        public static string EliminarEquipo(int id)
         {
             try
             {
-                bool enServicio = DAL.DALEquipos.EquipoEnServicio(id);
+                bool enServicio = DAL.DALEquipos.EquipoEnServicio(id,"Equipos");
                 List<EquiposVO> enReparacion = DAL.DALEquipos.GetLstEquipos(true);
 
-                //si ésta condicion se cumple quiere decir que NO hay equipos en repqrqción y no se pueden eliminar (lógica de negocio)
+                //si ésta condicion se cumple quiere decir que NO hay equipos en repqrqción y se pueden eliminar (lógica de negocio)
                 if (enReparacion.Count == 0 && !enServicio)
                 {
                     DAL.DALEquipos.DelEquipo(id);
-                    return "Equipo eliminado";
+                    return "eliminado";
                 }
                 else
                 {
-                    return "El equipo esta en reparacion o servicio";
+                    //El equipo esta en reparacion o servicio
+                    return "error";
                 }
             }
             catch (Exception ex)
@@ -92,6 +113,10 @@ namespace ServicioTecnico.BLL
 
         }
 
+        public static EquiposVO GetById(int id)
+        {
+            return DALEquipos.GetById(id);
+        }
 
 
 

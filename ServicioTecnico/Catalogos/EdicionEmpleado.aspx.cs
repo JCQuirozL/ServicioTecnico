@@ -46,8 +46,8 @@ namespace ServicioTecnico.Catalogos
                 txtCalle.Text = empleado.Calle;
                 txtNumero.Text = empleado.Numero;
                 txtCP.Text = empleado.CP;
-                DDLTipoEmpleado.SelectedValue= empleado.TipoEmpleado.ToString();
-                
+                DDLTipoEmpleado.SelectedValue = empleado.TipoEmpleado.ToString();
+
 
             }
         }
@@ -70,15 +70,25 @@ namespace ServicioTecnico.Catalogos
                 string cp = txtCP.Text;
                 string tipoEmpleado = DDLTipoEmpleado.SelectedValue.ToString();
 
-                BLLEmpleados.UpdEmpleado(id,nombre, apaterno, amaterno, fechaNac, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
+                string restultado = BLLEmpleados.UpdEmpleado(id, nombre, apaterno, amaterno, fechaNac, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
 
-                UtilControls.SweetBoxConfirm("Registro modificado", "El registro se ha modificado satisfactoriamente", "success", "ListaEmpleados.aspx", this.Page, this.GetType());
+                if (restultado == "error")
+                {
+                    UtilControls.SweetBox("Error", "El empleado está asignado a una orden de servicio", "error", this.Page, this.GetType());
+
+                }
+                else if (restultado == "modificado")
+                {
+                    UtilControls.SweetBoxConfirm("Registro modificado", "El registro se ha modificado satisfactoriamente", "success", "ListaEmpleados.aspx", this.Page, this.GetType());
+
+                }
+
             }
             catch (Exception ex)
             {
-                UtilControls.SweetBox("Error", ex.ToString() , "error", this.Page, this.GetType());
-            
-            throw;
+                UtilControls.SweetBox("Error", ex.ToString(), "error", this.Page, this.GetType());
+
+                throw;
             }
         }
     }

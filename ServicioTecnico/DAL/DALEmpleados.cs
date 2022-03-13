@@ -92,7 +92,7 @@ namespace ServicioTecnico.DAL
                 string Query = "Empleado_Eliminar";
                 SqlConnection cnx = new SqlConnection();
                 SqlCommand cmd = new SqlCommand(Query, cnx);
-
+                cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id", id);
 
@@ -181,7 +181,7 @@ namespace ServicioTecnico.DAL
           
         }   
 
-        public static bool EnServicio(int id)
+        public static bool EnServicioDetalle(int id)
         {
             try
             {
@@ -208,6 +208,31 @@ namespace ServicioTecnico.DAL
                 throw;
             }
             
+        }
+        public static bool EnServicio(int id, string tabla)
+        {
+
+            try
+            {
+                //llama al stored procedure que verifica si hay un regitro hitórico de éste equipo en la tabla Servicios
+                DataSet dsEmpleado = DBConnection.ExecuteDataSet("Entidades_EnServicios", "@Id", id, "@Tabla", tabla);
+
+                //si se cumple, quiere decir que encontró equipo en la tabla Servicios
+                if (dsEmpleado.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+
+                return false;
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
 

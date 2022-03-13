@@ -53,11 +53,11 @@ namespace ServicioTecnico.DAL
         }
 
         //--Insrtar
-        public static void InsertarEquipo(string Marca, string Color, string Espec, string Serie, string Foto)
+        public static void InsertarEquipo(string Marca, string Color, string Desc, string Espec, string Serie, string Foto)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Equipos_Insertar", "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie,"@Foto", Foto);
+                DBConnection.ExecuteNonQuery("Equipos_Insertar", "@Marca", Marca, "@Color", Color,"@Descripcion" , Desc, "@Especificaciones", Espec, "@Serie", Serie,"@Foto", Foto);
             }
             catch (Exception ex)
             {
@@ -68,11 +68,11 @@ namespace ServicioTecnico.DAL
 
         //--Actualizar
 
-        public static void UpdEquipo(int Id, string Marca, string Color, string Espec, string Serie, string Foto, bool? EnReparacion)
+        public static void UpdEquipo(int Id, string Marca, string Color, string Desc, string Espec, string Serie, string Foto, bool? EnReparacion)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Equipos_Actualizar", "@Id", Id, "@Marca", Marca, "@Color", Color, "@Especificaciones", Espec, "@Serie", Serie,"@Foto",Foto, "@EnRep", EnReparacion);
+                DBConnection.ExecuteNonQuery("Equipos_Actualizar", "@Id", Id, "@Marca", Marca, "@Color", Color,"@Descripcion", Desc, "@Especificaciones", Espec, "@Serie", Serie,"@Foto",Foto, "@EnReparacion", EnReparacion);
             }
             catch (Exception ex)
             {
@@ -123,20 +123,15 @@ namespace ServicioTecnico.DAL
         }
 
         //Aqui no puedo usar el mismo procedimiento que checa los tecnicos en servicio porq es en diferente tabla
-        public static bool EquipoEnServicio(int id)
+        public static bool EquipoEnServicio(int id,string tabla)
         {
 
             try
             {
-                SqlConnection cnx = new SqlConnection();
-                SqlCommand cmd = new SqlCommand("Equipo_EnServicio", cnx);
-                cmd.Parameters.AddWithValue("@Id", id);
+                //llama al stored procedure que verifica si hay un regitro hitórico de éste equipo en la tabla Servicios
+                DataSet dsEquipo = DBConnection.ExecuteDataSet("Entidades_EnServicios", "@Id", id, "@Tabla", tabla);
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataSet dsEquipo = new DataSet();
-                adapter.Fill(dsEquipo);
-
-                //si se cumple, quiere decir que encontró equipo en reparación
+                //si se cumple, quiere decir que encontró equipo en la tabla Servicios
                 if (dsEquipo.Tables[0].Rows.Count > 0)
                 {
                     return true;

@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - CompuXpress - Servicio Técnico</title>
+    <title><%: Page.Title %>CompuXpress - Servicio Técnico</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -68,6 +68,15 @@
                                 </li>
                                 <li>
                                     <a href="/Catalogos/AltaEmpleado.aspx">Alta de Empleado
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/Catalogos/Equipos/ListaEquipos.aspx">Lista de Equipos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Catalogos/Equipos/AltaEquipo.aspx">Alta de equipo
                                     </a>
                                 </li>
                             </ul>
