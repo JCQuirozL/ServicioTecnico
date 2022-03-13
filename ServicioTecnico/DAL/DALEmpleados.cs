@@ -71,11 +71,11 @@ namespace ServicioTecnico.DAL
 
         //Actualizar
 
-        public static void UpdEmpleado(int id, string nombre, string appaterno, string apmaterno, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static void UpdEmpleado(int id, string nombre, string appaterno,string apmaterno, DateTime? fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Empleados_Actualizar", "@Id", id, "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
+                DBConnection.ExecuteNonQuery("Empleados_Actualizar", "@Id", id, "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno, "@FechaNac", fechaNac, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
             }
             catch (Exception)
             {
@@ -105,8 +105,49 @@ namespace ServicioTecnico.DAL
 
                 throw;
             }
+            finally{
+                cnx.Close();
+            }
 
         }
+
+        public static EmpleadoVO GetById(int id)
+        {
+            try
+            {
+                string Query = "Empleados_GetById";
+                SqlCommand cmd = new SqlCommand(Query, cnx);
+                cmd.Connection = cnx;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                DataSet dsEmpleado = new DataSet();
+
+                adapter.Fill(dsEmpleado);
+
+                //Si encuentra registros queire decir que si encontró empleados que son técnicos
+                if (dsEmpleado.Tables[0].Rows.Count > 0)
+                {
+                    DataRow drEmpleado = dsEmpleado.Tables[0].Rows[0];
+                    EmpleadoVO empleado = new EmpleadoVO(drEmpleado);
+                    return empleado;
+                }
+                else
+                {
+                    EmpleadoVO empleado = new EmpleadoVO();
+                    return empleado;
+                }
+
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
 
         //Pude usar el mismo procedimiento de listar pero éste lo hago por comodidad para usar
@@ -144,12 +185,13 @@ namespace ServicioTecnico.DAL
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("En_Servicio", cnx);
-                cmd.Parameters.AddWithValue("@Id", id);
+                SqlCommand cmd = new SqlCommand("En_ServicioDetalle", cnx);
+                cmd.Connection = cnx;                             
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
                 DataSet dsEmpleado = new DataSet();
-                adapter.Fill(dsEmpleado);
+                adapter.Fill(dsEmpleado); //Llenar consulta
 
                 //si encuentra registros quiere decir que encontró a aquellos empleados técnicos asignados a alguna orden de servicio (histórico)
                 if (dsEmpleado.Tables[0].Rows.Count > 0)

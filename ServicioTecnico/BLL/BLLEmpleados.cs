@@ -1,4 +1,5 @@
-﻿using ServicioTecnico.VO;
+﻿using ServicioTecnico.DAL;
+using ServicioTecnico.VO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,25 +32,26 @@ namespace ServicioTecnico.BLL
         }
 
         //Actualizar empleado
-        public static string UpdEmpleado(int id, string nombre, string appaterno, string apmaterno, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static string UpdEmpleado(int id, string nombre, string appaterno, string apmaterno, DateTime? fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
                 bool enServicio = DAL.DALEmpleados.EnServicio(id);
 
                 //No se puede modificar un tipo de empleado "TECNICO" a otro tipo si ya tiene asignada una orden o detalle de servicio
-                if(enServicio && tipoEmpleado!="Técnico" || tipoEmpleado != "Tecnico")
+                if ((tipoEmpleado != "Técnico") && (enServicio))
                 {
-                    return "Empleado con orden de servicio";
+                    //EmpleEmpleado con orden de servicio
+                    return "error";
                 }
                 else
                 {
-                    DAL.DALEmpleados.UpdEmpleado(id, nombre, appaterno, apmaterno, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
+                   DALEmpleados.UpdEmpleado(id, nombre, appaterno, apmaterno, fechaNac, email, telefono, estado, ciudad, calle, numero, cp, tipoEmpleado);
 
-                    return "Empleado modificado";
+                    return "modificado";
                 }
 
-                
+
             }
             catch (Exception)
             {
@@ -69,12 +71,12 @@ namespace ServicioTecnico.BLL
                 //Si está en un detalle de servicio no lo vamos a borrar
                 if (enServicio)
                 {
-                    return "El empleado está asignado a un servicio";
+                    return "error";
                 }
                 else
                 {
                     DAL.DALEmpleados.DeleteEmpleado(id);
-                    return "Empleado borrado";
+                    return "borrado";
                 }
             }
             catch (Exception ex)
@@ -82,6 +84,11 @@ namespace ServicioTecnico.BLL
 
                 throw;
             }
+        }
+
+        public static EmpleadoVO GetById(int id)
+        {
+            return DALEmpleados.GetById(id);
         }
 
     }

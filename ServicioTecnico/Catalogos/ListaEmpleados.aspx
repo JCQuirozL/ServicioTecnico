@@ -12,9 +12,9 @@
                         <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True">
                             <ItemStyle Width="50px" />
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="Nombre" ControlStyle-Width="100px" ItemStyle-Width="100px" DataField="Nombre" />
-                        <asp:BoundField HeaderText="Apellido Paterno" ControlStyle-Width="100px" ItemStyle-Width="100px" DataField="ApPaterno" />
-                        <asp:BoundField HeaderText="Apellido Materno" ControlStyle-Width="100px" ItemStyle-Width="100px" DataField="ApMaterno" />
+                        <asp:BoundField HeaderText="Nombre" ControlStyle-Width="80px" ItemStyle-Width="100px" DataField="Nombre" />
+                        <asp:BoundField HeaderText="Apellido Paterno" ControlStyle-Width="80px" ItemStyle-Width="100px" DataField="ApPaterno" />
+                        <asp:BoundField HeaderText="Apellido Materno" ControlStyle-Width="80px" ItemStyle-Width="100px" DataField="ApMaterno" />
                         <asp:BoundField HeaderText="Email" ControlStyle-Width="100px" ItemStyle-Width="100px" DataField="Email" />
                         <asp:BoundField HeaderText="Teléfono" ControlStyle-Width="100px" ItemStyle-Width="100px" DataField="Telefono" />
                         <asp:TemplateField HeaderText="Estado">
@@ -27,10 +27,10 @@
                                 <asp:DropDownList ID="DDLEstado" CssClass="form-control" runat="server"></asp:DropDownList>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField ReadOnly="true" HeaderText="Ciudad" ItemStyle-Width="100px" ControlStyle-Width="100px" DataField="Ciudad" />
-                        <asp:BoundField ReadOnly="true" HeaderText="Calle" ItemStyle-Width="100px" ControlStyle-Width="100px" DataField="Calle" />
-                        <asp:BoundField ReadOnly="true" HeaderText="Número" ItemStyle-Width="100px" DataField="Numero" />
-                        <asp:BoundField ReadOnly="true" HeaderText="Código Postal" ItemStyle-Width="100px" ControlStyle-Width="100px" DataField="CP" />
+                        <asp:BoundField HeaderText="Ciudad" ItemStyle-Width="100px" ControlStyle-Width="100px" DataField="Ciudad" />
+                        <asp:BoundField  HeaderText="Calle" ItemStyle-Width="100px" ControlStyle-Width="100px" DataField="Calle" />
+                        <asp:BoundField HeaderText="Número" ItemStyle-Width="100px" DataField="Numero" ControlStyle-Width="60px"/>
+                        <asp:BoundField HeaderText="Código Postal" ItemStyle-Width="80px" ControlStyle-Width="80px" DataField="CP" />
                         <asp:TemplateField HeaderText="Tipo Empleado">
                             <ControlStyle Width="100px" />
                             <ItemStyle Width="100px" />
@@ -43,7 +43,7 @@
                         </asp:TemplateField>
                          <asp:CommandField ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" ControlStyle-Width="80px" ItemStyle-Width="80px" />
                         <asp:CommandField ShowEditButton="true" ButtonType="Button" ControlStyle-CssClass="btn btn-info" ControlStyle-Width="70px" ItemStyle-Width="70px" />
-                        <asp:ButtonField Text="Seleccionar" CommandName="Select" ButtonType="Button" ControlStyle-CssClass="btn btn-info btn-xs" />
+                        <asp:ButtonField Text="Seleccionar" CommandName="Select" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
                     </Columns>
                 </asp:GridView>
             </div>

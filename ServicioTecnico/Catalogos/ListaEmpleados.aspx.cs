@@ -59,6 +59,7 @@ namespace ServicioTecnico.Catalogos
 
             DDLEstado.SelectedValue = estado;
             DDLTipoEmpleado.SelectedValue = tipoEmpleado;
+            DDLTipoEmpleado.Enabled = false;
 
         }
 
@@ -86,17 +87,50 @@ namespace ServicioTecnico.Catalogos
                 string numero = e.NewValues["Numero"].ToString();
                 string cp = e.NewValues["CP"].ToString();
                 DropDownList DDLTipoEmpleado = (DropDownList)GVEmpleados.Rows[e.RowIndex].FindControl("DDLTipoEmpleado");
-            }
-            catch (Exception)
-            {
+                
+                string result = BLLEmpleados.UpdEmpleado(int.Parse(id), nombre, apaterno, amaterno, null, email, telefono, DDLEstado.SelectedValue.ToString(), ciudad, calle, numero, cp, DDLTipoEmpleado.SelectedValue.ToString());
 
-                throw;
+                if (result == "error")
+                {
+                    UtilControls.SweetBox("Error", "El empleado no se puede modificar debido a que está en el histórico de servicios", "error", this.Page, this.GetType());
+                }
+                else
+                {
+                    UtilControls.SweetBox("Registro modificado", "El registro se ha modificado satisfactoriamente", "success", this.Page, this.GetType());
+
+                }
+
+                GVEmpleados.EditIndex = -1;
+                ActualizarLista();
+            }
+            catch (Exception ex)
+            {
+                UtilControls.SweetBox("Error", ex.ToString(), "error", this.Page, this.GetType());
+
             }
         }
 
         protected void GVEmpleados_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
+            try
+            {
+                string idEmpleado = GVEmpleados.DataKeys[e.RowIndex].Values["Id"].ToString();
+                string result = BLLEmpleados.DeleteEmpleado(int.Parse(idEmpleado));
 
+                if (result == "error")
+                {
+                    UtilControls.SweetBox("Error", "El empleado no se puede borrar debido a que está en el histórico de servicios", "error", this.Page, this.GetType());
+                }
+                else
+                {
+                    UtilControls.SweetBox("Registro borrado", "El registro se ha borrado satisfactoriamente", "error", this.Page, this.GetType());
+                }
+            }
+            catch (Exception ex)
+            {
+
+                UtilControls.SweetBox("Error", ex.ToString(), "error", this.Page, this.GetType());
+            }
         }
 
         protected void GVEmpleados_RowCommand(object sender, GridViewCommandEventArgs e)

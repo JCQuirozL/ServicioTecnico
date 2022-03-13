@@ -41,8 +41,8 @@ namespace ServicioTecnico.Catalogos
                 string email = txtEmail.Text;
                 string telefono = txtTelefono.Text;
                 string estado = DDLEstado.SelectedValue;
-                string ciudad = txtNombre.Text;
-                string calle = txtTelefono.Text;
+                string ciudad = txtCiudad.Text;
+                string calle = txtCalle.Text;
                 string numero = txtNumero.Text;
                 string cp = txtCP.Text;
                 string tipoEmpleado = DDLTipoEmpleado.SelectedValue;
