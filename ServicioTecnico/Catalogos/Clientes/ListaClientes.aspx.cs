@@ -95,7 +95,12 @@ namespace ServicioTecnico.Catalogos.Clientes
 
         protected void GVClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            if (e.CommandName == "Select")
+            {
+                int index = int.Parse(e.CommandArgument.ToString());//referencia al renglon selccionado
+                string id = GVClientes.DataKeys[index].Values["Id"].ToString();//recuperar el valor de la columna Id del renglón seleccionado
+                Response.Redirect("EdicionCliente.aspx?id=" + id);
+            }
         }
     }
 }

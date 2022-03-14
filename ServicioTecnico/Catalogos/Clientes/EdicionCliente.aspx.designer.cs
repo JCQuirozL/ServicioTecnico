@@ -11,8 +11,17 @@ namespace ServicioTecnico.Catalogos.Clientes
 {
 
 
-    public partial class AltaCliente
+    public partial class EdicionCliente
     {
+
+        /// <summary>
+        /// Control Id.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Id;
 
         /// <summary>
         /// Control txtNombre.

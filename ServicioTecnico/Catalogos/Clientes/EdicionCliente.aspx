@@ -1,10 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaCliente.aspx.cs" Inherits="ServicioTecnico.Catalogos.Clientes.AltaCliente" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EdicionCliente.aspx.cs" Inherits="ServicioTecnico.Catalogos.Clientes.EdicionCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Alta de cliente</h3>
+                <h3>Modificando el cliente <asp:Label ID="Id" runat="server"></asp:Label></h3>
             </div>
         </div>
         <div class="row">
@@ -47,7 +46,7 @@
                             <asp:RequiredFieldValidator ControlToValidate="txtEmail" ID="RequiredFieldValidator3" runat="server" CssClass="text-danger" ErrorMessage="Email es obligatorio">
                             </asp:RequiredFieldValidator>
                             <div style="position: absolute; top: 0; left: 0;">
-                                <asp:RegularExpressionValidator runat="server" ErrorMessage="El formato del correo no es correcto" ControlToValidate="txtEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" CssClass="text-danger"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator runat="server" ErrorMessage="El correo debe contener @" ControlToValidate="txtEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" CssClass="text-danger"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                 <div class="form-group">
                     <label for="<%=txtTelefono.ClientID%>">Teléfono</label>
                     <asp:TextBox ID="txtTelefono" placeholder="" CssClass="form-control" runat="server" MaxLength="10"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtTelefono" CssClass="text-danger" runat="server" ErrorMessage="Teléfono de cliente requerido"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtTelefono" CssClass="text-danger" runat="server" ErrorMessage="Teléfono de chofer requerido"></asp:RequiredFieldValidator>
                     <%-- Acá colocaremos una máscara --%>
                     <ajaxToolkit:MaskedEditExtender ID="MEEtxtTelefono" TargetControlID="txtTelefono" Mask="(999) 999-9999" ClearMaskOnLostFocus="false" runat="server" />
                 </div>

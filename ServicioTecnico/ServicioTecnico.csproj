@@ -111,6 +111,7 @@
     <Content Include="About.aspx" />
     <Content Include="Catalogos\AltaEmpleado.aspx" />
     <Content Include="Catalogos\Clientes\AltaCliente.aspx" />
+    <Content Include="Catalogos\Clientes\EdicionCliente.aspx" />
     <Content Include="Catalogos\Clientes\ListaClientes.aspx" />
     <Content Include="Catalogos\EdicionEmpleado.aspx" />
     <Content Include="Catalogos\Equipos\AltaEquipo.aspx" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="Catalogos\Clientes\AltaCliente.aspx.designer.cs">
       <DependentUpon>AltaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\EdicionCliente.aspx.cs">
+      <DependentUpon>EdicionCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\EdicionCliente.aspx.designer.cs">
+      <DependentUpon>EdicionCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Clientes\ListaClientes.aspx.cs">
       <DependentUpon>ListaClientes.aspx</DependentUpon>

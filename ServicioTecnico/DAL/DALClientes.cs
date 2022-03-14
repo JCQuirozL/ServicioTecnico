@@ -137,7 +137,7 @@ namespace ServicioTecnico.DAL
         {
             try
             {
-                string StoredProc = "Clientes_GetById";
+                string StoredProc = "Cliente_GetById";
                 SqlCommand cmd = new SqlCommand(StoredProc, cnx);
                 cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
