@@ -76,7 +76,7 @@ namespace ServicioTecnico.BLL
                 }
                 else
                 {
-                    DAL.DALEmpleados.DeleteEmpleado(id);
+                    DALEmpleados.DeleteEmpleado(id);
                     return "borrado";
                 }
             }

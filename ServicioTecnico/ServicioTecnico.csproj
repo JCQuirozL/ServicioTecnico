@@ -110,6 +110,8 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Catalogos\AltaEmpleado.aspx" />
+    <Content Include="Catalogos\Clientes\AltaCliente.aspx" />
+    <Content Include="Catalogos\Clientes\ListaClientes.aspx" />
     <Content Include="Catalogos\EdicionEmpleado.aspx" />
     <Content Include="Catalogos\Equipos\AltaEquipo.aspx" />
     <Content Include="Catalogos\Equipos\EdicionEquipo.aspx" />
@@ -183,6 +185,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\BLLClientes.cs" />
     <Compile Include="BLL\BLLEmpleados.cs" />
     <Compile Include="BLL\BLLEquipos.cs" />
     <Compile Include="Catalogos\AltaEmpleado.aspx.cs">
@@ -191,6 +194,20 @@
     </Compile>
     <Compile Include="Catalogos\AltaEmpleado.aspx.designer.cs">
       <DependentUpon>AltaEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\AltaCliente.aspx.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\AltaCliente.aspx.designer.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\ListaClientes.aspx.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Clientes\ListaClientes.aspx.designer.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\EdicionEmpleado.aspx.cs">
       <DependentUpon>EdicionEmpleado.aspx</DependentUpon>
@@ -234,6 +251,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DALClientes.cs" />
     <Compile Include="DAL\DALEquipos.cs" />
     <Compile Include="DAL\DALEmpleados.cs" />
     <Compile Include="Default.aspx.cs">
@@ -271,6 +289,7 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="VO\ClientesVO.cs" />
     <Compile Include="VO\EmpleadoVO.cs" />
     <Compile Include="VO\EquiposVO.cs" />
   </ItemGroup>

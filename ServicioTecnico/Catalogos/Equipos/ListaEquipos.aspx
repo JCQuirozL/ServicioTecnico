@@ -7,7 +7,7 @@
                 <h3>Lista de equipos</h3>
                 <%if (GVEquipos.Rows.Count== 0)
                     {  %>
-                        <h4>No hay regsitros ingresados aún</h4><hr /> <br />
+                        <h4>No hay registros ingresados aún</h4><hr /> <br />
                         <a href="AltaEquipo.aspx"><h4>Clic aquí</h4></a><h4>para empezar</h4>
 
                 <%} %>

@@ -22,7 +22,7 @@ namespace ServicioTecnico.DAL
                 //Declaramos un DataSet
                 DataSet dsEmpleados = new DataSet();
 
-                if (Tipo==null)
+                if (Tipo == null)
                 {
                     //Obetenr todo los empleados de todo tipo
                     dsEmpleados = DBConnection.ExecuteDataSet("Empleados_Listar");
@@ -56,11 +56,11 @@ namespace ServicioTecnico.DAL
 
 
         //Insertar Empleado
-        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno,DateTime fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static void InsertarEmpleado(string nombre, string appaterno, string apmaterno, DateTime fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
-                DBConnection.ExecuteNonQuery("Empleado_Insertar", "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno,"@FechaNac",fechaNac, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
+                DBConnection.ExecuteNonQuery("Empleado_Insertar", "@Nombre", nombre, "@ApPaterno", appaterno, "@ApMaterno", apmaterno, "@FechaNac", fechaNac, "@Email", email, "@Telefono", telefono, "@Estado", estado, "@Ciudad", ciudad, "@Calle", calle, "@Numero", numero, "@CP", cp, "@TipoEmpleado", tipoEmpleado);
             }
             catch (Exception)
             {
@@ -71,7 +71,7 @@ namespace ServicioTecnico.DAL
 
         //Actualizar
 
-        public static void UpdEmpleado(int id, string nombre, string appaterno,string apmaterno, DateTime? fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
+        public static void UpdEmpleado(int id, string nombre, string appaterno, string apmaterno, DateTime? fechaNac, string email, string telefono, string estado, string ciudad, string calle, string numero, string cp, string tipoEmpleado)
         {
             try
             {
@@ -89,13 +89,11 @@ namespace ServicioTecnico.DAL
         {
             try
             {
-                string Query = "Empleado_Eliminar";
-                SqlConnection cnx = new SqlConnection();
+                string Query = "Empleados_Eliminar";
                 SqlCommand cmd = new SqlCommand(Query, cnx);
                 cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id", id);
-
                 cnx.Open();
                 cmd.ExecuteNonQuery();
 
@@ -105,7 +103,8 @@ namespace ServicioTecnico.DAL
 
                 throw;
             }
-            finally{
+            finally
+            {
                 cnx.Close();
             }
 
@@ -139,7 +138,7 @@ namespace ServicioTecnico.DAL
                     return empleado;
                 }
 
-               
+
             }
             catch (Exception)
             {
@@ -159,7 +158,7 @@ namespace ServicioTecnico.DAL
                 SqlCommand cmd = new SqlCommand(Query, cnx);
                 cmd.Parameters.AddWithValue("@Tipo", tipo);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    
+
                 DataSet dsEmpleado = new DataSet();
 
                 adapter.Fill(dsEmpleado);
@@ -178,15 +177,15 @@ namespace ServicioTecnico.DAL
 
                 throw;
             }
-          
-        }   
+
+        }
 
         public static bool EnServicioDetalle(int id)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand("En_ServicioDetalle", cnx);
-                cmd.Connection = cnx;                             
+                cmd.Connection = cnx;
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id", id);
@@ -207,7 +206,7 @@ namespace ServicioTecnico.DAL
 
                 throw;
             }
-            
+
         }
         public static bool EnServicio(int id, string tabla)
         {

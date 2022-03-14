@@ -79,6 +79,15 @@
                                     <a href="/Catalogos/Equipos/AltaEquipo.aspx">Alta de equipo
                                     </a>
                                 </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/Catalogos/Clientes/ListaClientes.aspx">Lista de Clientes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Catalogos/Clientes/AltaCliente.aspx">Alta de Cliente
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
