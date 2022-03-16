@@ -24,7 +24,7 @@
             <%--izquierdo--%>
             <div class="col-md-6">
                  <div class="form-group">
-                    <label for="<%=DDLEmpleado.ClientID %>">Técnico</label>
+                    <label for="<%=DDLEmpleado.ClientID %>">Empleado que recibe</label>
                     <asp:DropDownList ID="DDLEmpleado" CssClass="form-control" runat="server" DataValueField="Id" DataTextField="NombreCompletoE"></asp:DropDownList>
                 </div>
                 <div class="form-group">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="<%=txtDistancia.ClientID%>">Distancia</label>
-                    <asp:TextBox ID="txtDistancia" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDistancia" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
 
                 </div>
                 <div class="form-group">
@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <label for="<%=txtTelefono.ClientID%>">Teléfono</label>
-                    <asp:TextBox ID="txtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTelefono" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -80,7 +80,7 @@
                             <label for="<%=txtDestino.ClientID %>">Dirección de entrega</label>
                             <asp:TextBox ID="txtDestino" CssClass="form-control" runat="server"></asp:TextBox>
                             <%--funcion de autocompletado--%>
-                            <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" TargetControlID="txtDestino" MinimumPrefixLength="2" ServicePath="~/WebServiceDirecciones.asmx" ServiceMethod="GetDirecciones" runat="server"></ajaxToolkit:AutoCompleteExtender>
+                            <ajaxToolkit:AutoCompleteExtender ID="ACtxtDestino" TargetControlID="txtDestino" MinimumPrefixLength="2" ServicePath="~/WebServiceDirecciones.asmx" ServiceMethod="GetDirecciones" runat="server"></ajaxToolkit:AutoCompleteExtender>
 
                         </div>
                         <div class="col-md-5">
@@ -93,7 +93,7 @@
 
                 <div class="form-group">
                     <label for="<%=FELlegada.ClientID%>">Fecha Llegada</label>
-                    <input type="text" id="FELlegada" name="FELlegada" class="form-control" runat="server" />
+                    <input type="text" id="FELlegada" name="FELlegada" class="form-control" runat="server" readonly="readonly" />
                 </div>
             </div>
         </div>
@@ -433,7 +433,7 @@
                                 <div class="col-md-6">
                                     <asp:Button ID="btnGuardarDir" CssClass="btn btn-success" runat="server" Text="Guardar" ValidationGroup="POD" formnovalidate="" OnClick="btnGuardarDir_Click" OnClientClick="setDireccion()" />
                                 </div>
-                                <asp:Button ID="btnCancelar" CssClass="btn btn-danger" formnovalidate="" runat="server" Text="Cancelar" OnClientClick="limpiarDatos()" />
+                                <asp:Button ID="btnCancelar" CssClass="btn btn-danger" formnovalidate="" runat="server" Text="Cancelar" OnClientClick="LimpiarDatos()" />
                             </div>
 
                         </div>

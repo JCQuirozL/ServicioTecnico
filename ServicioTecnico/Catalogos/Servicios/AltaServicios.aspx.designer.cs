@@ -132,13 +132,13 @@ namespace ServicioTecnico.Catalogos.Servicios
         protected global::System.Web.UI.WebControls.TextBox txtDestino;
 
         /// <summary>
-        /// Control AutoCompleteExtender1.
+        /// Control ACtxtDestino.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender AutoCompleteExtender1;
+        protected global::AjaxControlToolkit.AutoCompleteExtender ACtxtDestino;
 
         /// <summary>
         /// Control btnAddDestino.

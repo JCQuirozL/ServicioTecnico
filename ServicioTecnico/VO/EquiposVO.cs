@@ -49,5 +49,6 @@ namespace ServicioTecnico.VO
         public string Foto { get => _Foto; set => _Foto = value; }
         public bool EnReparacion { get => _EnReparacion; set => _EnReparacion = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
+        public string EquipoC { get => Marca + " " + Descripcion + " " + Color; }
     }
 }

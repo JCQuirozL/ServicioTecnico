@@ -25,14 +25,16 @@ namespace ServicioTecnico
         {
             return "Hola a todos";
         }
-
-        public string[] GetDirecciones(string prefix)
+        
+        
+        [WebMethod]
+        public string[] GetDirecciones(string prefixText)
         {
             //conusme el SP Direcciones_Busqueda de la tabla Direcciones_Entrega
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Conn"].ConnectionString);
             SqlCommand cmd = new SqlCommand("Direcciones_Busqueda", connection);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@prefijo", prefix);
+            cmd.Parameters.AddWithValue("@prefijo", prefixText);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet dsDirecciones = new DataSet();
             adapter.Fill(dsDirecciones);
