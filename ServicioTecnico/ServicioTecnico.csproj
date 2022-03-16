@@ -53,6 +53,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -118,6 +120,21 @@
     <Content Include="Catalogos\Equipos\EdicionEquipo.aspx" />
     <Content Include="Catalogos\Equipos\ListaEquipos.aspx" />
     <Content Include="Catalogos\ListaEmpleados.aspx" />
+    <Content Include="Catalogos\Servicios\AltaServicios.aspx" />
+    <Content Include="Catalogos\Servicios\Revisiones.aspx" />
+    <Content Include="Connected Services\WSForAddresses\ServicioTecnico.WSForAddresses.insDireccionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\WSForAddresses\ServicioTecnico.WSForAddresses.InsertarDetalleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\WSForAddresses\WebService.disco" />
+    <None Include="Connected Services\WSForAddresses\configuration91.svcinfo" />
+    <None Include="Connected Services\WSForAddresses\configuration.svcinfo" />
+    <None Include="Connected Services\WSForAddresses\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -138,6 +155,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="WebServiceDirecciones.asmx" />
+    <None Include="Connected Services\WSForAddresses\WebService.wsdl" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -189,6 +208,7 @@
     <Compile Include="BLL\BLLClientes.cs" />
     <Compile Include="BLL\BLLEmpleados.cs" />
     <Compile Include="BLL\BLLEquipos.cs" />
+    <Compile Include="BLL\BLLServicios.cs" />
     <Compile Include="Catalogos\AltaEmpleado.aspx.cs">
       <DependentUpon>AltaEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +272,25 @@
     <Compile Include="Catalogos\ListaEmpleados.aspx.designer.cs">
       <DependentUpon>ListaEmpleados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Servicios\AltaServicios.aspx.cs">
+      <DependentUpon>AltaServicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\AltaServicios.aspx.designer.cs">
+      <DependentUpon>AltaServicios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\Revisiones.aspx.cs">
+      <DependentUpon>Revisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\Revisiones.aspx.designer.cs">
+      <DependentUpon>Revisiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WSForAddresses\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +301,7 @@
     <Compile Include="DAL\DALClientes.cs" />
     <Compile Include="DAL\DALEquipos.cs" />
     <Compile Include="DAL\DALEmpleados.cs" />
+    <Compile Include="DAL\DALServicios.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -300,6 +340,11 @@
     <Compile Include="VO\ClientesVO.cs" />
     <Compile Include="VO\EmpleadoVO.cs" />
     <Compile Include="VO\EquiposVO.cs" />
+    <Compile Include="VO\ServiciosVO.cs" />
+    <Compile Include="WebServiceDirecciones.asmx.cs">
+      <DependentUpon>WebServiceDirecciones.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +359,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WSForAddresses\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

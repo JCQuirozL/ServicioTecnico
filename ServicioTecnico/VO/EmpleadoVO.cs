@@ -27,6 +27,8 @@ namespace ServicioTecnico.VO
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string ApPaterno { get => _ApPaterno; set => _ApPaterno = value; }
         public string ApMaterno { get => _ApMaterno; set => _ApMaterno = value; }
+        public string NombreCompletoE { get => Nombre + " " + ApPaterno + " " + ApMaterno; }
+        public string NombreCompletoT { get => Nombre + " " + ApPaterno + " " + ApMaterno; }
         public DateTime FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
         public string Email { get => _Email; set => _Email = value; }
         public string Telefono { get => _Telefono; set => _Telefono = value; }

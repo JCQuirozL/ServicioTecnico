@@ -88,6 +88,11 @@
                                     <a href="/Catalogos/Clientes/AltaCliente.aspx">Alta de Cliente
                                     </a>
                                 </li>
+                                 <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/Catalogos/Servicios/AltaServicios.aspx">Capturar servicio
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

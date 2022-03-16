@@ -19,6 +19,7 @@ namespace ServicioTecnico.VO
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string ApPaterno { get => _ApPaterno; set => _ApPaterno = value; }
         public string ApMaterno { get => _ApMaterno; set => _ApMaterno = value; }
+        public string NombreCompletoC { get => Nombre + " " + ApPaterno + " " + ApMaterno; }
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Email { get => _Email; set => _Email = value; }
         public ClientesVO()
@@ -31,16 +32,16 @@ namespace ServicioTecnico.VO
             Email = string.Empty;
         }
 
-        public ClientesVO( DataRow dr)
+        public ClientesVO(DataRow dr)
         {
             Id = int.Parse(dr["Id"].ToString());
             Nombre = dr["Nombre"].ToString();
-            ApPaterno= dr["ApPaterno"].ToString();
+            ApPaterno = dr["ApPaterno"].ToString();
             ApMaterno = dr["ApMaterno"].ToString();
             Telefono = dr["Telefono"].ToString();
             Email = dr["Email"].ToString();
         }
 
-        
+
     }
 }
